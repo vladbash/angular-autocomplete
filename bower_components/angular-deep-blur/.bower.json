@@ -1,0 +1,37 @@
+{
+  "name": "angular-deep-blur",
+  "main": "angular-deep-blur.js",
+  "homepage": "https://github.com/myplanet/angular-deep-blur",
+  "authors": [
+    "Nick Matantsev <nick.m@myplanet.com>",
+    "Ates Goral <ates.g@myplanet.com>"
+  ],
+  "description": "Child-aware blur handler for Angular",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "angular",
+    "focus",
+    "blur",
+    "dropdown",
+    "popup"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*"
+  ],
+  "version": "1.0.8",
+  "_release": "1.0.8",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.8",
+    "commit": "88109e436e83e15ac4d8888706a4ccfb76f2adde"
+  },
+  "_source": "git://github.com/myplanet/angular-deep-blur.git",
+  "_target": "~1.0.8",
+  "_originalSource": "angular-deep-blur",
+  "_direct": true
+}

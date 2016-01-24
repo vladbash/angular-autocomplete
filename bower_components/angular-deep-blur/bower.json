@@ -1,0 +1,26 @@
+{
+  "name": "angular-deep-blur",
+  "main": "angular-deep-blur.js",
+  "homepage": "https://github.com/myplanet/angular-deep-blur",
+  "authors": [
+    "Nick Matantsev <nick.m@myplanet.com>",
+    "Ates Goral <ates.g@myplanet.com>"
+  ],
+  "description": "Child-aware blur handler for Angular",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "angular",
+    "focus",
+    "blur",
+    "dropdown",
+    "popup"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*"
+  ]
+}

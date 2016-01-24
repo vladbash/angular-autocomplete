@@ -1,4 +1,65 @@
-angular.module('auto-complete',[]);
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define([ 'module', 'angular' ], function (module, angular) {
+            module.exports = factory(angular);
+        });
+    } else if (typeof module === 'object') {
+        module.exports = factory(require('angular'));
+    } else {
+        if (!root.mp) {
+            root.mp = {};
+        }
+
+        root.mp.deepBlur = factory(root.angular);
+    }
+}(this, function (angular) {
+    'use strict';
+
+    function containsDom(parent, dom) {
+        while (dom) {
+            if (dom === parent) {
+                return true;
+            }
+
+            dom = dom.parentNode;
+        }
+
+        return false;
+    }
+
+    return angular.module('mp.deepBlur', [])
+        // child links must use tabindex=0 to capture focus in Webkit and avoiding triggering blur
+        .directive('deepBlur', [ '$timeout', function ($timeout) {
+            return {
+                restrict: 'A',
+                controller: [ '$scope', '$element', '$attrs', function ($scope, $element, $attrs) {
+                    var leaveExpr = $attrs.deepBlur,
+                        dom = $element[0];
+
+                    function onBlur(e) {
+                        // e.relatedTarget for Chrome
+                        // explicitOriginalTarget for Firefox
+                        // document.activeElement for IE 11
+                        var targetElement = e.relatedTarget || e.explicitOriginalTarget || document.activeElement;
+                        
+                        if (!containsDom(dom, targetElement)) {
+                            $timeout(function () {
+                                $scope.$apply(leaveExpr);
+                            }, 10);
+                        }
+                    }
+
+                    if (dom.addEventListener) {
+                        dom.addEventListener('blur', onBlur, true);
+                    } else {
+                        dom.attachEvent('onfocusout', onBlur); // For IE8
+                    }
+                } ]
+            };
+        } ]);
+}));
+
+angular.module('auto-complete',['mp.deepBlur']);
 
 angular.module('auto-complete').directive('autoCompleteInput',directiveFunc);
 
@@ -68,7 +129,7 @@ function directiveFunc(){
     },
     link:linkFunc,
     controller:autocompleteController,
-    template:'<div ng-init="init()" style="position:relative;" ng-blur="changeShowVariable(false)"><style>  input[type=text]:focus:not([readonly])#auto-complete-id{    border-bottom:1px solid {{color}} !important;    box-shadow:0 1px 0 0 {{color}} !important;  }  #auto-complete-label.active{    color:{{color}} !important;  }  .collection-item.active{    background-color:{{color}} !important;  }</style><div class="input-field">  <input type="text" id="auto-complete-id" ng-model="inputModel" ng-model-onblur ng-change="textChange()" ng-focus="changeShowVariable(true)">  <label id="auto-complete-label" for="auto-complete-id"><span ng-bind="acTitle"></span></label></div><div class="collection" ng-show="showList()" style="margin-top: -1%;position:absolute;width:100%;z-index:99;">  <a class="collection-item" ng-repeat="item in getData()" ng-click="chooseItem(item)"><span style="color:{{color}};" ng-bind="item"></span></a></div></div>',
+    template:'<div ng-init="init()"  deep-blur="changeShowVariable(false)" style="position:relative;"><style>  input[type=text]:focus:not([readonly])#auto-complete-id{    border-bottom:1px solid {{color}} !important;    box-shadow:0 1px 0 0 {{color}} !important;  }  #auto-complete-label.active{    color:{{color}} !important;  }  .collection-item.active{    background-color:{{color}} !important;  }</style><div class="input-field">  <input type="text" id="auto-complete-id" ng-model="inputModel" ng-model-onblur ng-change="textChange()" ng-focus="changeShowVariable(true)">  <label id="auto-complete-label" for="auto-complete-id"><span ng-bind="acTitle"></span></label></div><div class="collection" ng-show="showList()" style="margin-top: -1%;position:absolute;width:100%;z-index:99;">  <a class="collection-item" ng-repeat="item in getData()" ng-click="chooseItem(item)"><span style="color:{{color}};" ng-bind="item"></span></a></div></div>',
     //templateUrl:'/dirs/autocomplete.html'
   };
 };
