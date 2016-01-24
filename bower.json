@@ -1,0 +1,24 @@
+{
+  "name": "AutoComplete",
+  "main": "AutoComplete.js",
+  "homepage": "https://github.com/vladb95/angular-autocomplete",
+  "authors": [
+    "vladb95_ <vladb95z-soft@yandex.ru>"
+  ],
+  "description": "",
+  "moduleType": [],
+  "keywords": [
+    "auto-complete",
+    "materialize",
+    "angular",
+    "angular-autocomplete"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
