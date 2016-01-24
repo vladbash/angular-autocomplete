@@ -5,7 +5,8 @@
   <body ng-app="demoApp" ng-controller="demoCtrl">
     <div class="row">
       <div class="col s6">
-        <auto-complete-input auto-data="data" ac-title="'Choose employee'" color="color"></auto-complete-input>
+        <auto-complete-input auto-data="data" ac-title="'Choose employee'" color="color" input-model="input"></auto-complete-input>
+        <p><span ng-bind="input"></span></p>
       </div>
     </div>
   </body>

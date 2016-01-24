@@ -63,7 +63,8 @@ function directiveFunc(){
       autoData:'=',
       sourceLink:'=',
       acTitle:'=',
-      color:'='
+      color:'=',
+      inputModel:'='
     },
     link:linkFunc,
     controller:autocompleteController,

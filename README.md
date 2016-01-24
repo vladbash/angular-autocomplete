@@ -20,6 +20,7 @@ angular.module('demoApp').controller('demoCtrl',demoController);
 
 demoController.$inject=['$scope'];
 function demoController($scope){
+  $scope.input='';
 	$scope.data=["john", "bill", "charlie", "robert", "alban",
   "oscar", "marie", "celine", "brad", "drew", "rebecca",
    "michel", "francis", "jean", "paul", "pierre", "nicolas", "alfred"];
@@ -29,5 +30,5 @@ function demoController($scope){
 ###index.html
 
 ```sh
-<auto-complete-input auto-data="data" ac-title="'Choose employee'" color="color"></auto-complete-input>
+<auto-complete-input auto-data="data" ac-title="'Choose employee'" color="color" input-model="input"></auto-complete-input>
 ```
