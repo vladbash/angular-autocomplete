@@ -9,9 +9,9 @@ $ bower install angular-materialize-autocomplete
 * [https://github.com/Dogfalo/materialize]
 
 
-### Using
+## Using
 
-##script.js
+###script.js
 ```sh
 
 angular.module('demoApp',['auto-complete']);
@@ -26,7 +26,7 @@ function demoController($scope){
   $scope.color='#00BCD4';
 }
 ```
-##index.html
+###index.html
 
 ```sh
 <auto-complete-input auto-data="data" ac-title="'Choose employee'" color="color"></auto-complete-input>
