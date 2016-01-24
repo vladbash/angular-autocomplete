@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <title>Angular-autocomplete by vladb95</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="angularjs,materializecss,google-angular,angular,angular-materialize,angular-autocomplete,materialize-autocomplete,JavaScript">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
   </head>
-  <body>
+  <body ng-app="demoApp" ng-controller="demoCtrl">
     <section class="page-header">
       <h1 class="project-name">Angular-autocomplete</h1>
-      <h2 class="project-tagline">demo</h2>
+      <h2 class="project-tagline">angular,angular-materialize,angular-autocomplete,materialize-autocomplete</h2>
       <a href="https://github.com/vladb95/angular-autocomplete" class="btn">View on GitHub</a>
       <a href="https://github.com/vladb95/angular-autocomplete/zipball/master" class="btn">Download .zip</a>
       <a href="https://github.com/vladb95/angular-autocomplete/tarball/master" class="btn">Download .tar.gz</a>
@@ -27,6 +29,13 @@
 
 <div class="highlight highlight-source-shell"><pre>$ bower install angular-materialize-autocomplete</pre></div>
 
+
+<h3>Demo</h3>
+<div class="row">
+      <div class="col s6">
+        <auto-complete-input auto-data="data" ac-title="'Choose student'" color="color" input-model="input"></auto-complete-input>
+      </div>
+    </div>
 <h3>
 <a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dependencies</h3>
 
@@ -68,6 +77,11 @@ demoController.<span class="pl-smi">$inject</span>=[<span class="pl-s"><span cla
 
     </section>
 
-  
+
   </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+<script src="javascripts/autocomplete.min.js"></script>
+<script src="javascripts/script.js"></script>
 </html>
