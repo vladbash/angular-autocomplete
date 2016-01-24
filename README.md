@@ -8,8 +8,6 @@ $ bower install angular-materialize-autocomplete
 * [https://github.com/angular/angular.js]
 * [https://github.com/Dogfalo/materialize]
 
-### Demo
-[]
 
 ### Using
 
@@ -22,7 +20,9 @@ angular.module('demoApp').controller('demoCtrl',demoController);
 
 demoController.$inject=['$scope'];
 function demoController($scope){
-	$scope.data=["john", "bill", "charlie", "robert", "alban", "oscar", "marie", "celine", "brad", "drew", "rebecca", "michel", "francis", "jean", "paul", "pierre", "nicolas", "alfred"];
+	$scope.data=["john", "bill", "charlie", "robert", "alban",
+  "oscar", "marie", "celine", "brad", "drew", "rebecca",
+   "michel", "francis", "jean", "paul", "pierre", "nicolas", "alfred"];
   $scope.color='#00BCD4';
 }
 ```
