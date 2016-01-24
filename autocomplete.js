@@ -5,13 +5,27 @@ angular.module('auto-complete').directive('autoCompleteInput',directiveFunc);
 directiveFunc.$inject=[];
 function directiveFunc(){
   var linkFunc=function(scope,element,attributes){
+    function prevOf(yourElement) {
+      var parent = yourElement.parent();
+      var children = parent.children();
+
+      var prev;
+      for (var i = 1; i < children.length; i++){
+        if (children[i] === yourElement[0]) {
+          prev = children[i-1];
+        }
+      }
+
+      return prev;
+    }
     element.find('input').on('keydown',function(e){
       var collectionItems=null;
       if(e.keyCode===13){
-        element.find('.collection-item.active').trigger('click');
+        angular.element((element.children()[2]).querySelector('.collection-item.active')).triggerHandler('click');
       }
       if(e.keyCode===40|e.keyCode===38){
-        collectionItems=element.find('.collection-item');
+
+        collectionItems=angular.element(element.children()[2]).children();
         if(collectionItems.length===0){
           return;
         }
@@ -19,8 +33,7 @@ function directiveFunc(){
       {
         return;
       }
-      var active=element.find('.collection-item.active');
-
+      var active=(element.children()[2]).querySelector('.collection-item.active');
       var firstFlag=true;
       if(angular.element(active).length>0){
         firstFlag=false;
@@ -37,7 +50,7 @@ function directiveFunc(){
       }else if(e.keyCode===38)//up
       {
         angular.element(active).removeClass('active').children('span').css('color',scope.color);
-        angular.element(active).prev().addClass('active').children('span').css('color','white');
+        angular.element(prevOf(angular.element(active))).addClass('active').children('span').css('color','white');
       }
 
     });
