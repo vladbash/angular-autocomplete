@@ -1,9 +1,9 @@
-angular.module('auto-complete',['mp.deepBlur']);
+angular.module('auto-complete',[]);
 
 angular.module('auto-complete').directive('autoCompleteInput',directiveFunc);
 
-directiveFunc.$inject=[];
-function directiveFunc(){
+directiveFunc.$inject=['$timeout'];
+function directiveFunc($timeout){
   var linkFunc=function(scope,element,attributes){
     function prevOf(yourElement) {
       var parent = yourElement.parent();
@@ -18,6 +18,9 @@ function directiveFunc(){
 
       return prev;
     }
+    element.find('input').bind('blur',function(){
+      $timeout(function(){scope.showListFlag=false;},200);
+    });
     element.find('input').on('keydown',function(e){
       var collectionItems=null;
       if(e.keyCode===13){
@@ -68,13 +71,13 @@ function directiveFunc(){
     },
     link:linkFunc,
     controller:autocompleteController,
-    template:'<div ng-init="init()"  deep-blur="changeShowVariable(false)" style="position:relative;"><style>  input[type=text]:focus:not([readonly])#auto-complete-id{    border-bottom:1px solid {{color}} !important;    box-shadow:0 1px 0 0 {{color}} !important;  }  #auto-complete-label.active{    color:{{color}} !important;  }  .collection-item.active{    background-color:{{color}} !important;  }</style><div class="input-field">  <input type="text" id="auto-complete-id" ng-model="inputModel" ng-model-onblur ng-change="textChange()" ng-focus="changeShowVariable(true)">  <label id="auto-complete-label" for="auto-complete-id"><span ng-bind="acTitle"></span></label></div><div class="collection" ng-show="showList()" style="margin-top: -1%;position:absolute;width:100%;z-index:99;">  <a class="collection-item" ng-repeat="item in getData()" ng-click="chooseItem(item)"><span style="color:{{color}};" ng-bind="item"></span></a></div></div>',
-    //templateUrl:'/dirs/autocomplete.html'
+    template:'<div ng-init="init()" style="position:relative;"><style>input[type=text]:focus:not([readonly])#auto-complete-id{  border-bottom:1px solid {{color}} !important;   box-shadow:0 1px 0 0 {{color}} !important; }  #auto-complete-label.active{      color:{{color}} !important;     }  .collection-item.active  {    background-color:{{color}} !important; /*! */  }  </style>  <div class="input-field">    <input type="text" id="auto-complete-id" ng-model="inputModel" ng-change="textChange()" ng-focus="changeShowVariable(true)">    <label id="auto-complete-label" for="auto-complete-id"><span ng-bind="acTitle"></span></label>  </div>  <div class="collection" ng-show="showList()" style="margin-top: -1%;position:absolute;width:100%;z-index:99;">  <a class="collection-item" ng-repeat="item in getData()" ng-click="chooseItem(item)"><span style="color:{{color}};" ng-bind="item"></span></a>  </div></div>',
+    //templateUrl:'./dev/autocomplete.html'
   };
 };
 
-autocompleteController.$inject=['$scope'];
-function autocompleteController($scope){
+autocompleteController.$inject=['$scope','autoService'];
+function autocompleteController($scope,autoService){
   $scope.inputModel='';
   $scope.dataType=0;
   $scope.dataToList=[];
@@ -85,6 +88,7 @@ function autocompleteController($scope){
       $scope.dataType=1;
     }else if($scope.sourceLink!==undefined&&$scope.sourceLink!==''){
       $scope.dataType=2;
+      $scope.dataToList=autoService.getData($scope.sourceLink);
     }
   }
 
@@ -138,7 +142,7 @@ autoServiceFunction.$inject=['$http','$q'];
 function autoServiceFunction($http,$q){
   var factoryObject={
     getData:function(link){
-      var defered=$q.defered();
+      var defered=$q.defer();
       $http.get(link).then(function(data){
         defered.resolve(data);
       },function(data){

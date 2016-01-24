@@ -1,0 +1,22 @@
+<div ng-init="init()"  ng-blur="changeShowVariable(false)" style="position:relative;">
+  <style>
+  input[type=text]:focus:not([readonly])#auto-complete-id{
+    border-bottom:1px solid {{color}} !important;
+     box-shadow:0 1px 0 0 {{color}} !important;
+   }
+    #auto-complete-label.active{
+        color:{{color}} !important;
+       }
+    .collection-item.active
+    {
+      background-color:{{color}} !important; /*! */
+    }
+    </style>
+    <div class="input-field">
+      <input type="text" id="auto-complete-id" ng-model="inputModel" ng-change="textChange()" ng-focus="changeShowVariable(true)">
+      <label id="auto-complete-label" for="auto-complete-id"><span ng-bind="acTitle"></span></label>
+    </div>
+    <div class="collection" ng-show="showList()" style="margin-top: -1%;position:absolute;width:100%;z-index:99;">
+    <  a class="collection-item" ng-repeat="item in getData()" ng-click="chooseItem(item)"><span style="color:{{color}};" ng-bind="item"></span></a>
+    </div>
+  </div>

@@ -4,7 +4,7 @@ var gulp = require('gulp'),
 	uglify = require('gulp-uglify');
 
 gulp.task('min',function(){
-  gulp.src(['bower_components/angular-deep-blur/angular-deep-blur.js','dev/autocomplete.js'])
+  gulp.src(['dev/autocomplete.js'])
     .pipe(jsmin())
     .pipe(uglify())
     .pipe(concat('autocomplete.min.js'))
@@ -12,7 +12,7 @@ gulp.task('min',function(){
 });
 
 gulp.task('build',function(){
-  gulp.src(['bower_components/angular-deep-blur/angular-deep-blur.js','dev/autocomplete.js'])
+  gulp.src(['dev/autocomplete.js'])
     .pipe(concat('autocomplete.js'))
     .pipe(gulp.dest('dest'));
 });
