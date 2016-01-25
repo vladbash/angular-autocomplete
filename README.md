@@ -1,5 +1,9 @@
 # angular-autocomplete
 
+#Demo
+
+[http://vladb95.github.io/angular-autocomplete/]
+
 ### Installation
 ```sh
 $ bower install angular-materialize-autocomplete
@@ -7,6 +11,7 @@ $ bower install angular-materialize-autocomplete
 ### Dependencies
 * [https://github.com/angular/angular.js]
 * [https://github.com/Dogfalo/materialize]
+
 
 
 ## Using
