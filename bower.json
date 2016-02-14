@@ -1,6 +1,6 @@
 {
   "name": "AutoComplete",
-  "main": "AutoComplete.js",
+  "main": "dist/autocomplete.js",
   "homepage": "https://github.com/vladb95/angular-autocomplete",
   "authors": [
     "vladb95_ <vladb95z-soft@yandex.ru>"
