@@ -35,5 +35,5 @@ function demoController($scope){
 ###index.html
 
 ```sh
-<auto-complete-input auto-data="data" ac-title="'Choose employee'" color="color" input-model="input"></auto-complete-input>
+<auto-complete-input auto-data="data" ac-title="'Choose employee'" color="color" ng-model="input"></auto-complete-input>
 ```
