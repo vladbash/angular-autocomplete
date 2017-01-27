@@ -2,11 +2,10 @@
   <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
   </head>
-  <body ng-app="demoApp" ng-controller="demoCtrl">
+  <body ng-controller="demoCtrl">
     <div class="row">
       <div class="col s6">
-        <auto-complete-input auto-data="data" ac-title="'Choose employee'" color="color" input-model="input"></auto-complete-input>
-        <p><span ng-bind="input"></span></p>
+        <auto-complete-input auto-data="data" ac-title="'Choose employee'" color="color" ng-model="input"></auto-complete-input>
       </div>
     </div>
   </body>
@@ -14,7 +13,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
   <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
-  <script src="../bower_components/angular-deep-blur/angular-deep-blur.js"></script>
-  <script src="../dev/autocomplete.js"></script>
+  <script src="./autocomplete.min.js"></script>
   <script src="script.js"></script>
 </html>

@@ -1,0 +1,39 @@
+{
+  "name": "angular-autocomplete",
+  "version": "1.0.0",
+  "description": "angular auto-complete directive",
+  "main": "dest/autocomplete.min.js",
+  "scripts": {
+    "start": "lite-server -c lite-server.config.json",
+    "build": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vladb95/angular-autocomplete.git"
+  },
+  "keywords": [
+    "angular",
+    "auto-complete",
+    "angular-directive",
+    "directive",
+    "materialize",
+    "angular-component",
+    "complete",
+    "autocomplate",
+    "autocomplete-materialize"
+  ],
+  "author": "vladb95",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vladb95/angular-autocomplete/issues"
+  },
+  "homepage": "https://github.com/vladb95/angular-autocomplete#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-angular-embed-templates": "^2.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-jsmin": "^0.1.5",
+    "gulp-uglify": "^2.0.1",
+    "lite-server": "^2.2.2"
+  }
+}

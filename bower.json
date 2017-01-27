@@ -1,5 +1,5 @@
 {
-  "name": "AutoComplete",
+  "name": "auto-complete",
   "main": "dist/autocomplete.js",
   "homepage": "https://github.com/vladb95/angular-autocomplete",
   "authors": [
@@ -20,5 +20,10 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "angular": "^1.6.1",
+    "materialize": "^0.98.0",
+    "angular-deep-blur": "^1.0.10"
+  }
 }

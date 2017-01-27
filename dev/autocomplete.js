@@ -63,12 +63,10 @@ function directiveFunc($timeout) {
           angular.element(active).removeClass('active').children('span').css('color', scope.color);
           angular.element(prevOf(angular.element(active))).addClass('active').children('span').css('color', 'white');
         }
-
       });
     },
     controller: autocompleteController,
-    template: '<div ng-init="init()" style="position:relative;"><style>input[type=text]:focus:not([readonly])#auto-complete-id{  border-bottom:1px solid {{color}} !important;   box-shadow:0 1px 0 0 {{color}} !important; }  #auto-complete-label.active{      color:{{color}} !important;     }  .collection-item.active  {    background-color:{{color}} !important; /*! */  }  </style>  <div class="input-field">    <input type="text" id="auto-complete-id" ng-model="inputModel" ng-change="textChange()" ng-focus="changeShowVariable(true)">    <label id="auto-complete-label" for="auto-complete-id"><span ng-bind="acTitle"></span></label>  </div>  <div class="collection" ng-show="showList()" style="margin-top: -1%;position:absolute;width:100%;z-index:99;">  <a class="collection-item" ng-repeat="item in getData()" ng-click="chooseItem(item)"><span style="color:{{color}};" ng-bind="item"></span></a>  </div></div>',
-    //templateUrl:'./dev/autocomplete.html'
+    templateUrl:'./autocomplete.html'
   };
 };
 
@@ -107,7 +105,7 @@ function autocompleteController($scope, autoService) {
     $scope.dataToList = [];
     if ($scope.dataType === 1) {
       for (var i = 0; i < $scope.autoData.length; i++) {
-        if ($scope.autoData[i].indexOf($scope.inputModel) !== -1) {
+        if ($scope.autoData[i].toLowerCase().indexOf($scope.inputModel.toLowerCase()) !== -1) {
           $scope.dataToList.push($scope.autoData[i]);
         }
       }

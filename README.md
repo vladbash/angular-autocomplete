@@ -19,17 +19,16 @@ $ bower install angular-materialize-autocomplete
 ###script.js
 ```sh
 
-angular.module('demoApp',['auto-complete']);
-
-angular.module('demoApp').controller('demoCtrl',demoController);
+angular.module('demoApp', ['auto-complete'])
+       .controller('demoCtrl', demoController);
 
 demoController.$inject=['$scope'];
 function demoController($scope){
-  $scope.input='';
-	$scope.data=["john", "bill", "charlie", "robert", "alban",
+  $scope.input = '';
+	$scope.data = ["john", "bill", "charlie", "robert", "alban",
   "oscar", "marie", "celine", "brad", "drew", "rebecca",
    "michel", "francis", "jean", "paul", "pierre", "nicolas", "alfred"];
-  $scope.color='#00BCD4';
+  $scope.color = '#00BCD4';
 }
 ```
 ###index.html
